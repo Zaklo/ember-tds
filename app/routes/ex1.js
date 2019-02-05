@@ -17,15 +17,12 @@ const Note = EmberObject.extend({
       return "alert alert-danger";
     }
 
-      return "alert alert-info";
+    return "alert alert-info";
   })
 
 
 
 });
-
-
-
 
 export default Route.extend({
   model(){
