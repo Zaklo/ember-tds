@@ -1,36 +1,32 @@
 {{outlet}}
 
 <form class="img-rounded">
-  <h1 style="text-align: center; color: white;">Services</h1>
+  <h1>Services</h1>
   <div class="alert alert-info">
     <span>Choisissez les éléments à inclure</span><br>
-    <p style="font-weight: bold;">services sélectionnés :{{model.countActive}}</p>
+    <p>services sélectionnés :{{model.countActive}}</p>
   </div>
 
-  <div class="list-group">
+  {{#each model.services as |service|}}
+    <ul>
+      <li class="{{action "toggleActive" service on="click"}} {{if service.active "active"}}">
+        {{service.name}}
+        <span>{{service.price}}</span></li>
+    </ul>
 
-    {{#each model.services as |service|}}
-      <div style="margin-top: 10px;"
-           class="list-group-item action {{action "toggleActive" service on="click"}} {{if service.active "active"}}">
-        <div class="row">
-          <div class="col-md-6" style="text-align: left;">{{service.name}}</div>
-          <div class="col-md-6" style="text-align: right;">{{service.price}}</div>
-        </div>
+  {{/each}}
+  <hr>
+  <div class="total">
+    <h5>Total : <span>{{model.sumActive}}</span></h5>
+  </div>
+
+  <div>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1"><input class="form-check" type="checkbox"></span>
       </div>
-    {{/each}}
-    <hr>
-    <h5 style="color:white;">Total : {{model.sumActive}}</h5>
-
-  </div>
-  <div class="input-group">
-    <input type="checkbox">
-    {{input value=model.promo}}
-    {{#if model.reduc}}
-      <div> Tx reduc : {{model.reduc}}</div>
-    {{/if}}
-    {{#if model.reduc}}
-
-    {{/if}}
+      {{input type="text" class="form-control" placeholder="Code promo" value=model.promo}}
+    </div>
   </div>
 
 </form>
