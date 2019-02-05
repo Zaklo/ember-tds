@@ -2,15 +2,16 @@
 <div class="container" style="width: 400px; background-color: #61a1bc; margin-top: 50px;">
 
   <h1 style="text-align: center; color: white;">Services</h1>
-    <div class="alert alert-info">
-      <span>Choisissez les éléments à inclure</span><br>
-      <p style="font-weight: bold;">services sélectionnés :{{model.countActive}}</p>
-    </div>
+  <div class="alert alert-info">
+    <span>Choisissez les éléments à inclure</span><br>
+    <p style="font-weight: bold;">services sélectionnés :{{model.countActive}}</p>
+  </div>
 
   <div class="list-group">
 
     {{#each model.services as |service|}}
-      <div style="margin-top: 10px;" class="list-group-item action {{action "toggleActive" service on="click"}} {{if service.active "active"}}">
+      <div style="margin-top: 10px;"
+           class="list-group-item action {{action "toggleActive" service on="click"}} {{if service.active "active"}}">
         <div class="row">
           <div class="col-md-6" style="text-align: left;">{{service.name}}</div>
           <div class="col-md-6" style="text-align: right;">{{service.price}}</div>
@@ -21,5 +22,15 @@
     <h5 style="color:white;">Total : {{model.sumActive}}</h5>
 
   </div>
+  <div class="input-group">
+    <input type="checkbox">
+  {{input value=model.promo}}
+  {{#if model.reduc}}
+    <div> Tx reduc : {{model.reduc}}</div>
+  {{/if}}
+    {{#if model.reduc}}
 
-</div> 
+    {{/if}}
+  </div>
+
+</div>
