@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import EmberObject, {computed} from '@ember/EmberObject';
+import EmberObject, {computed} from '@ember/object';
 
 const Services=EmberObject.extend({
   services: [],
@@ -16,6 +16,11 @@ const Services=EmberObject.extend({
       }
     });
   }),
+  promos:{
+    "B22":0.05,
+    "AZ":0.01,
+    "UBOAT":0.02
+  }
 });
 
 export default Route.extend({
