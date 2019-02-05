@@ -1,6 +1,6 @@
 {{outlet}}
-<div class="container" style="width: 400px; background-color: #61a1bc; margin-top: 50px;">
 
+<form class="img-rounded">
   <h1 style="text-align: center; color: white;">Services</h1>
   <div class="alert alert-info">
     <span>Choisissez les éléments à inclure</span><br>
@@ -24,13 +24,13 @@
   </div>
   <div class="input-group">
     <input type="checkbox">
-  {{input value=model.promo}}
-  {{#if model.reduc}}
-    <div> Tx reduc : {{model.reduc}}</div>
-  {{/if}}
+    {{input value=model.promo}}
+    {{#if model.reduc}}
+      <div> Tx reduc : {{model.reduc}}</div>
+    {{/if}}
     {{#if model.reduc}}
 
     {{/if}}
   </div>
 
-</div>
+</form>

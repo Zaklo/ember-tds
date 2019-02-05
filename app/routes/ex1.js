@@ -1,31 +1,38 @@
 import Route from '@ember/routing/route';
-import EmberObject, { computed } from '@ember/object';
+import EmberObject, {computed} from '@ember/object';
 
 const Note = EmberObject.extend({
-  content:'',
-  MAX:100,
-  size:computed('content',function(){
-    this.set('info','');
-    return this.content.length;
+  content: '',
+  MAX: 100,
+  size: computed('content', function () {
+    this.set('info', '');
+    return 100 - this.content.length;
   }),
-  info:'',
-  style:computed('size',function() {
-    if (this.get('size') > 0 & this.get('size') < 50) {
-      return "alert alert-success";
+  info: '',
+  style: computed('size', function () {
+    let result = 100 - this.content.length;
+    if (result < 50 && result > 20) {
+      return "alert alert-warning";
     }
-    if (this.get('size') > 50 & this.get('size') < 75) {
+    if (result < 20 && result >= 0) {
       return "alert alert-danger";
     }
 
-    return "alert alert-info";
-  })
+    return "alert alert-primary";
+  }),
+  modified: computed('content', function () {
+    if (this.content.length > 0) {
+      return "Note modifiée";
+    }
+  }),
 
 
 
 });
 
 export default Route.extend({
-  model(){
+  model() {
     return Note.create();
+
   }
 });

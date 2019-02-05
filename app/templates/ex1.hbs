@@ -1,29 +1,38 @@
 {{outlet}}
 <div class="container">
-  {{textarea class="form-group" value=model.content }}
+  <div class="panel panel-primary" style="margin-top: 50px; border: 1px solid #337ab7; border-radius: 5px; padding: 15px;">
+    <div class="panel-heading"> Ex 1: note Application</div>
+    <div class="panel-body">
+
+      <label for="comment">Note :</label>
+      <p>
+        {{textarea class="form-control" rows="5" id="comment" value=model.content maxlength=100 }}
+      </p>
+
+
+      <button type="button" class="btn btn-primary" {{action "save" model}}>Sauvegarder</button>
+      <button type="button" class="btn btn-primary"{{action "clear" model}}>Effacer</button>
+
+
+      {{#if model.info }}
+        <div class="alert alert-success" style="margin-top: 20px;">
+          {{model.info}}
+        </div>
+      {{/if}}
 
 
 
-  <button class="button btn-primary"{{action "save" model}}> Save </button>
-  <button {{action "clear" model}}> effacer </button>
+      <div class="alert alert-primary" style="margin-top: 20px;">
+        <p>Nombre de caractères restant : {{model.size}}</p>
+      </div>
 
 
-  {{#if model.info }}
-    <div class="alert alert-success">
-      {{model.info}}
+      {{#if model.modified}}
+        <div class="{{model.style}}" style="margin-top: 20px;">
+          {{model.modified}}
+        </div>
+      {{/if}}
+
     </div>
-
-  {{/if}}
-
-
-
-  {{#if model.style  }}
-    <div class="{{model.style}}">
-
-    </div>
-
-  {{/if}}
-
-
-
+  </div>
 </div>
