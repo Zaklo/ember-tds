@@ -3,16 +3,31 @@ import {get} from '@ember/object';
 
 export default Controller.extend({
 
-  copyArrayElements(from, to) {
+  copyArrayElements(fromName, toName) {
+    let model = this.get('model');
+    let from = get(model, fromName);
+    let to = get(model, toName);
     to.pushObjects(from);
   },
 
+
   actions: {
     addToIncluded() {
-      let model = this.get('model');
-      let dispoItems_ = get(model, 'dispoItems_');
-      let includedItems = get(model, 'includedItems');
-      this.copyArrayElements(dispoItems_, includedItems);
+      this.copyArrayElements('dispoItems_', 'includedItems');
+    },
+
+    addAllToIncluded() {
+      this.copyArrayElements('dispoItems_', 'includedItems');
+
+    },
+
+    removeFromIncluded() {
+      this.copyArrayElements('includedItems', 'dispoItems_');
+
+    },
+
+    removeFromAllIncluded() {
+      this.copyArrayElements('includedItems', 'dispoItems');
 
     }
   }

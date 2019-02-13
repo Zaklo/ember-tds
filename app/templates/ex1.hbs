@@ -8,13 +8,17 @@
         </label>
       </div>
       <div class="inline-block">
-        <div title="Ajouter" class="btn btn-primary list-btn" onclick=(action="addToIncluded()")>{{fa-icon "fas fa-arrow-right"}}
+        <div title="Ajouter" class="btn btn-primary list-btn" onClick=(action="addToIncluded()")>{{fa-icon
+          "fas fa-arrow-right"}}
         </div>
-        <div title="Ajouter tous" class="btn btn-primary list-btn">{{fa-icon "fas fa-angle-double-right"}}
+        <div title="Ajouter tous" class="btn btn-primary list-btn" onClick=(action="addAllToIncluded()">{{fa-icon
+          "fas fa-angle-double-right"}}
         </div>
-        <div title="Retirer" class="btn btn-primary list-btn">{{fa-icon "fas fa-arrow-left"}}
+        <div title="Retirer" class="btn btn-primary list-btn" onClick=(action="removeFromIncluded()">{{fa-icon
+          "fas fa-arrow-left"}}
         </div>
-        <div title="Retirer tous" class="btn btn-primary list-btn">{{fa-icon "fas fa-angle-double-left"}}
+        <div title="Retirer tous" class="btn btn-primary list-btn" onClick=(action="removeFromAllIncluded()">{{fa-icon
+          "fas fa-angle-double-left"}}
         </div>
       </div>
       <div class="inline-block">
