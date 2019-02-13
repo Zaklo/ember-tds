@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import EmberObject, {computed} from '@ember/object';
+import EmberObject, {computed, get} from '@ember/object';
 
 const Element = EmberObject.extend({
   dispoItems: null,
@@ -7,19 +7,24 @@ const Element = EmberObject.extend({
   dispoItemsIds_: null,
   includedItemsIds_: null,
   dispoItems_: computed('dispoItemsIds_.[]', function () {
-
+    let dispoItems = this.get('dispoItems');
+    let dispoItemsIds_ = this.get('dispoItemsIds_');
+    return dispoItems._filter(item => dispoItemsIds_.include(get(item, 'id')));
   }),
 
   includedItems_: computed('includedItemsIds_.[]', function () {
-
+    let includeItems = this.get('includeItems');
+    let includeItemsIds_ = this.get('includeItemsIds_');
+    return includeItems._filter(item => includeItemsIds_.include(get(item, 'id')));
   }),
 
 });
 
 
 export default Route.extend({
-  model(){
+  model() {
     return Element.create({
+      includedItems: [],
       dispoItems:
         [
           {
@@ -66,7 +71,8 @@ export default Route.extend({
           }
         ],
       includedItemsIds_: [],
-      dispoItemsIds_: []
+      dispoItemsIds_: [],
+
     });
   }
 
