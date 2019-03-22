@@ -1,0 +1,18 @@
+<div class="ui message">
+  <div class="ui header">Modifier</div>
+  <div class="ui title">Nom</div>
+  <div class="ui input">
+    {{input type="text" value=model.copy.name class="ui input"}}
+  </div>
+  <div class="ui title">Descriptif</div>
+  <div class="ui input">
+    {{input type="text" value=model.copy.descriptif class="ui input"}}
+  </div>
+  <div class="ui title">StartDate</div>
+  <div class="ui title">DueDate</div>
+  <div class="ui title">Owner</div>
+  <select class="ui fluid dropdown"></select>
+  <button {{action "save" model}} class="ui button green"><i class="check icon"></i> Valider</button>
+  <button {{action "cancel" model}} class="ui button"><i class="remove icon"></i>Annuler</button>
+</div>
+{{outlet}}

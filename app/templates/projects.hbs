@@ -1,0 +1,24 @@
+<div class="container">
+  <div style="padding-bottom: 15px">
+    {{#link-to "projects.new" class="ui inverted green button"}}
+      <i class="add icon"></i> Ajouter un projet
+    {{/link-to}}
+  </div>
+  <ul class="list-group">
+    {{#each model as |proj|}}
+      <li class="list-group-item">
+        {{proj.name}}
+        <button {{action "delete" dev}} class="ui inverted circular button red right floated">
+          <i class="remove icon"></i>
+        </button>
+        {{#link-to "projects.edit" dev class="ui inverted circular button blue right floated"}}
+          <i class="edit icon"></i>
+        {{/link-to}}
+
+      </li>
+    {{/each}}
+  </ul>
+  {{outlet}}
+</div>
+
+{{outlet}}
