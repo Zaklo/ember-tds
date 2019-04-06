@@ -1,0 +1,35 @@
+<div class="ui container" style="margin-top: 10px;">
+<div class="ui message">
+  <div class="ui header">Modifier</div>
+
+  <div class="ui title">Nom</div>
+  <div class="ui input">
+    {{input type="text" value=model.copy.name}}
+  </div>
+
+  <div class="ui title">Descriptif</div>
+  <div class="ui input">
+    {{input type="text" value=model.copy.descriptif}}
+  </div>
+
+  <div class="ui title">Date de création</div>
+  <div class="ui input">
+    {{input type="date" value=model.copy.creationDate}}
+  </div>
+
+  <div class="ui title">Date de rendu</div>
+  <div class="ui input">
+    {{input type="date" value=model.copy.duedate}}
+  </div>
+
+  <div class="ui title">Fait par</div>
+  <div class="ui input">
+    {{input type="text" value=model.copy.owner}}
+  </div>
+
+
+  <button style="margin-top: 10px;" {{action "save" model}} class="ui button green"><i class="check icon"></i> Valider
+  </button>
+  <button {{action "cancel" model}} class="ui button"><i class="remove icon"></i>Annuler</button>
+
+</div></div>

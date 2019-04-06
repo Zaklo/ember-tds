@@ -1,0 +1,64 @@
+<div class="container">
+
+  {{#link-to "projects.new" class="ui green button"}}
+    <i class="add icon"></i> Ajouter un projet
+  {{/link-to}}
+
+
+  <table class="ui celled striped table">
+    <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Descriptif</th>
+      <th>StartDate</th>
+      <th>DueDate</th>
+      <th>Modifier</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {{#each model as |proj|}}
+      <tr>
+        {{#link-to "project" proj.id}}
+          <td>{{proj.name}}</td>
+        {{/link-to}}
+        <td>{{proj.descriptif}}</td>
+        <td>{{proj.creationDate}}</td>
+        <td>{{proj.duedate}}</td>
+        <td>
+          <button {{action "askDeleteConfirm" proj}} class="ui circular button red right floated">
+            <i class="remove icon"></i>
+          </button>
+          {{#link-to "projects.edit" proj class="ui circular button blue right floated"}}
+            <i class="edit icon"></i>
+          {{/link-to}}</td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+
+  {{#if model.del}}
+    <div class="ui icon message">
+      <i class="question circle icon"></i>
+      <div class="content">
+        <div class="header">
+          Supprimer {{model.del.name}} ?
+        </div>
+        <p>
+          <button class="green ui button" {{action "deleteProj" model.del}}>
+            <i class="check icon"></i>
+            Valider
+          </button>
+
+          <button class="negative ui button" {{action "cancelDelete"}}>
+            <i class="remove icon"></i>
+            Annuler
+          </button>
+        </p>
+      </div>
+    </div>
+  {{/if}}
+
+</div>
+
+{{outlet}}

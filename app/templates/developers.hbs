@@ -1,0 +1,58 @@
+<div class="container">
+
+  {{#link-to "developers.new" class="ui green button"}}
+    <i class="add icon"></i> Ajouter un développeur
+  {{/link-to}}
+
+  <table class="ui celled striped table">
+    <thead>
+    <tr>
+      <th>Identité</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {{#each model as |dev|}}
+      <tr>
+        <td>
+          {{dev.identity}}
+          <button {{action "askDeleteConfirm" dev}} class="ui circular button red right floated">
+            <i class="remove icon"></i>
+          </button>
+          {{#link-to "developers.edit" dev class="ui circular button blue right floated"}}
+            <i class="edit icon"></i>
+          {{/link-to}}
+        </td>
+      </tr>
+    {{/each}}
+
+    </tbody>
+  </table>
+  <ul class="list-group">
+
+  </ul>
+
+  {{#if model.del}}
+    <div class="ui icon message">
+      <i class="question circle icon"></i>
+      <div class="content">
+        <div class="header">
+          Supprimer {{model.del.identity}} ?
+        </div>
+        <p>
+          <button class="green ui button" {{action "deleteDev" model.del}}>
+            <i class="check icon"></i>
+            Valider
+          </button>
+
+          <button class="negative ui button" {{action "cancelDelete"}}>
+            <i class="remove icon"></i>
+            Annuler
+          </button>
+        </p>
+      </div>
+    </div>
+  {{/if}}
+
+</div>
+{{outlet}}
